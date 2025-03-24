@@ -1,0 +1,35 @@
+name: MealNote
+options:
+  bundleIdPrefix: com.rayshiki
+  xcodeVersion: "16.2"
+packages:
+ RxSwift:
+    url: https://github.com/ReactiveX/RxSwift
+    branch: main
+ RxDataSources:
+    url: https://github.com/RxSwiftCommunity/RxDataSources
+    from: 5.0.2
+targets:
+  MealNote:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.2"
+    sources: [MealNote]
+    resources: [MealNote/Resources]
+    info:
+      path: MealNote/Info.plist
+      properties:
+        UILaunchStoryboardName: "LaunchScreen"
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: "Default Configuration"
+                UISceneDelegateClassName: "$(PRODUCT_MODULE_NAME).SceneDelegate"
+    buildSettings:
+      CURRENT_PROJECT_VERSION: 1
+      MARKETING_VERSION: 1.0.0
+      PRODUCT_MODULE_NAME: MealNote
+    dependencies:
+      - package: RxSwift
+      - package: RxDataSources
