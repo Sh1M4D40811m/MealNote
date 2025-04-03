@@ -32,6 +32,7 @@ final class DiaryEntryCoordinator: Coordinator {
         let vc = UIHostingController(rootView: view)
         let nav = NavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
+        nav.setScrollEdgeWithoutSeparator()
         parent.present(nav, animated: true)
         self.navigator = nav
     }
