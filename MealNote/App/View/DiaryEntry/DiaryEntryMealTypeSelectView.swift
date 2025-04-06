@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DiaryEntryMealTypeSelectView: View {
-    @Binding private var mealType: [SelectableButtonItem]
+    @Binding private var mealType: [DiaryEntrySelectableButtonItem]
     
-    init(mealType: Binding<[SelectableButtonItem]>) {
+    init(mealType: Binding<[DiaryEntrySelectableButtonItem]>) {
         self._mealType = mealType
     }
         
