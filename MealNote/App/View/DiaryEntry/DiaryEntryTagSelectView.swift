@@ -15,7 +15,7 @@ struct DiaryEntryTagSelectView: View {
     }
     
     var body: some View {
-        TagCloudLayout(alignment: .topLeading) {
+        TagCloudLayout(alignment: .topLeading, spacing: 8) {
             ForEach($tags) { $tag in
                 SelectableButton(
                     title: tag.title,
