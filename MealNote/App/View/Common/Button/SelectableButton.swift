@@ -23,6 +23,7 @@ struct SelectableButton: View {
     var body: some View {
         Button(action: {
             isSelected.toggle()
+            action()
         }) {
             Text(title).multilineTextAlignment(.center)
         }

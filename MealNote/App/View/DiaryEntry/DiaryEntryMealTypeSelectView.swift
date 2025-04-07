@@ -13,6 +13,12 @@ struct DiaryEntryMealTypeSelectView: View {
     init(mealType: Binding<[DiaryEntrySelectableButtonItem]>) {
         self._mealType = mealType
     }
+    
+    private func selectMealType(_ selectedType: DiaryEntrySelectableButtonItem) {
+        for index in mealType.indices {
+            mealType[index].isSelected = (mealType[index].id == selectedType.id)
+        }
+    }
         
     var body: some View {
         TagCloudLayout(alignment: .topLeading, spacing: 8) {
@@ -20,7 +26,9 @@ struct DiaryEntryMealTypeSelectView: View {
                 SelectableButton(
                     title: type.title,
                     isSelected: $type.isSelected,
-                    action: {}
+                    action: {
+                        selectMealType(type)
+                    }
                 )
             }
         }
