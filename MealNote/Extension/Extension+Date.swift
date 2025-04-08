@@ -8,24 +8,21 @@
 import Foundation
 
 enum DateFormat: String {
-    case date = "yMd"     // 2023/1/1
-    case time = "Hm"     // 1:00
+    case date = "yyyy/M/d" // 2023/1/1
+    case time = "HH:mm"     // 1:00
+    case dateTimeJp = "yyyy年M月d日 H時m分" // 2023年1月1日 1時0分
+    case dateWeekJp = "yyyy年M月d日(EE)" // 2023年1月1日(日)
 }
 
 extension Locale {
     static let japan = Locale(identifier: "ja_JP")
 }
 
-extension DateFormatter {
-    func setTemplate(_ format: DateFormat) {
-        dateFormat = DateFormatter.dateFormat(fromTemplate: format.rawValue, options: 0, locale: .japan)
-    }
-}
-
 extension Date {
     func toString(_ format: DateFormat) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.setTemplate(format)
+        dateFormatter.dateFormat = format.rawValue
+        dateFormatter.locale = .japan
         return dateFormatter.string(from: self)
     }
 }
