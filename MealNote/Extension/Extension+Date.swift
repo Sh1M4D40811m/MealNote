@@ -10,7 +10,7 @@ import Foundation
 enum DateFormat: String {
     case date = "yyyy/M/d" // 2023/1/1
     case time = "HH:mm"     // 1:00
-    case dateTimeJp = "yyyy年M月d日 H時m分" // 2023年1月1日 1時0分
+    case dateTimeJp = "yyyy年M月d日 H時mm分" // 2023年1月1日 1時00分
     case dateWeekJp = "yyyy年M月d日(EE)" // 2023年1月1日(日)
 }
 
