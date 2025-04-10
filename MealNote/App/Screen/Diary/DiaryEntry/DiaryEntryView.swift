@@ -91,6 +91,9 @@ struct DiaryEntryView: View {
                 dismissAction(true)
             } label: {
                 Text("キャンセル")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.teal)
+
             }
         }
         
@@ -99,6 +102,9 @@ struct DiaryEntryView: View {
                 dismissAction(false)
             } label: {
                 Text("保存")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.teal)
+
             }
         }
     }
