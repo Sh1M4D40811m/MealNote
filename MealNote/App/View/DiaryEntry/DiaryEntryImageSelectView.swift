@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 
+// TODO: 画像複数選択できるようにする
 struct DiaryEntryImageSelectView: View {
     @Binding private var selectedItems: [PhotosPickerItem]
     @Binding private var selectedImages: [UIImage]
