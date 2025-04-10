@@ -11,21 +11,22 @@ struct TextEditorWithTitleViewParameters {
     let title: String
     let placeholder: String
     let initialHeight: CGFloat
-    var text: String
 }
 
 struct TextEditorWithTitleView: View {
-    @Binding private var params: TextEditorWithTitleViewParameters
+    private var params: TextEditorWithTitleViewParameters
+    @Binding private var text: String
     
-    init(_ params: Binding<TextEditorWithTitleViewParameters>) {
-        self._params = params
+    init(_ params: TextEditorWithTitleViewParameters, text: Binding<String>) {
+        self.params = params
+        self._text = text
     }
     
     var body: some View {
         HStack(alignment: .top) {
             Text(params.title).font(.system(size: 16))
             Spacer()
-            TextEditorWithPlaceholderView(params.placeholder, text: $params.text)
+            TextEditorWithPlaceholderView(params.placeholder, text: $text)
                 .frame(
                     maxWidth: UIScreen.main.bounds.width * 2/3,
                     minHeight: params.initialHeight

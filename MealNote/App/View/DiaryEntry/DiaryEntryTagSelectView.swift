@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+struct DiaryEntrySelectableButtonItem: Identifiable {
+    let id = UUID()
+    let title: String
+    var isSelected: Bool = false
+}
+
 struct DiaryEntryTagSelectView: View {
     @Binding private var tags: [DiaryEntrySelectableButtonItem]
     
