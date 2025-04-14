@@ -1,0 +1,18 @@
+# Stringファイル
+strings:
+  inputs:
+    - MealNote/Resources/ja.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: MealNote/Generated/Strings.swift
+# 画像やカラーコードなどのAssetsリソース
+xcassets:
+  # 画像やカラーなど
+  inputs:
+    - MealNote/Resources/Images.xcassets
+    - MealNote/Resources/Colors.xcassets
+    - MealNote/Resources/Assets.xcassets
+  # テンプレート指定と保存先
+  outputs:
+    - templateName: swift5
+      output: MealNote/Generated/Assets.swift

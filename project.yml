@@ -2,6 +2,7 @@ name: MealNote
 options:
   bundleIdPrefix: com.rayshiki
   xcodeVersion: "16.2"
+  developmentLanguage: ja
 packages:
  RxSwift:
     url: https://github.com/ReactiveX/RxSwift
