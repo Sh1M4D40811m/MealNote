@@ -35,7 +35,7 @@ final class DiaryTopContainerViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "MealNote"
+        navigationItem.title = L10n.diaryTopNavigationTitle
     }
     
     private func addChildViewController() {

@@ -48,7 +48,7 @@ struct DiaryEntryImageSelectView: View {
             HStack {
                 imagePreview
                 Spacer()
-                Text("画像を追加")
+                Text(L10n.diaryEntrySelectImageHeader)
                     .foregroundColor(.teal)
                     .font(.system(size: 16, weight: .semibold))
                     .padding(.trailing, 16)

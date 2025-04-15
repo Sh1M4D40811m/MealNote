@@ -12,14 +12,14 @@ struct DiaryEntryView: View {
     var dismissAction: (_ isCancel: Bool) -> Void = { _ in }
     
     private var titleInputParams = TextEditorWithTitleViewParameters(
-        title: "タイトル",
-        placeholder: "メイン料理など（例：焼き鮭、唐揚げ...）",
+        title: L10n.diaryEntryTitleHeader,
+        placeholder: L10n.diaryEntryTitlePlaceholder,
         initialHeight: 80
     )
     
     private var memoInputParams = TextEditorWithTitleViewParameters(
-        title: "メモ",
-        placeholder: "付け合わせなど（例：白米、味噌汁...）",
+        title: L10n.diaryEntryMemoHeader,
+        placeholder: L10n.diaryEntryMemoPlaceholder,
         initialHeight: 120
     )
     
@@ -79,7 +79,7 @@ struct DiaryEntryView: View {
     }
     
     private var bottomButton: some View {
-        MediumEmphasisButton(title: "マイセット呼び出し") {
+        MediumEmphasisButton(title: L10n.diaryEntryCallMySet) {
             dismissAction(false)
         }.padding(16)
     }
@@ -90,7 +90,7 @@ struct DiaryEntryView: View {
             Button {
                 dismissAction(true)
             } label: {
-                Text("キャンセル")
+                Text(L10n.cancel)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.teal)
 
@@ -101,7 +101,7 @@ struct DiaryEntryView: View {
             Button {
                 dismissAction(false)
             } label: {
-                Text("保存")
+                Text(L10n.save)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.teal)
 

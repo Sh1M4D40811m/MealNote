@@ -19,7 +19,7 @@ struct DiaryEntryDateSelectView: View {
     var body: some View {
         VStack {
             HStack(spacing: 4) {
-                Text("日時を選択")
+                Text(L10n.diaryEntrySelectDateHeader)
                     .font(.system(size: 16))
                 Spacer()
                 TextButton(title: selectedDate.toString(.dateTimeJp)) {

@@ -5,4 +5,17 @@
   Created by shimadamio on 2025/04/11.
   
 */
-"sample" = "サンプル";
+
+// Common
+"save" = "保存";
+"cancel" = "キャンセル";
+// DiaryTop
+"diaryTopNavigationTitle" = "MealNote";
+// DiaryEntry
+"diaryEntrySelectDateHeader" = "日時を選択";
+"diaryEntryTitleHeader" = "タイトル";
+"diaryEntryTitlePlaceholder" = "メイン料理など（例：焼き鮭、唐揚げ...）";
+"diaryEntryMemoHeader" = "メモ";
+"diaryEntryMemoPlaceholder" = "付け合わせなど（例：白米、味噌汁...）";
+"diaryEntrySelectImageHeader" = "画像を追加";
+"diaryEntryCallMySet" = "マイセット呼び出し";
