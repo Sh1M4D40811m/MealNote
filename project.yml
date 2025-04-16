@@ -13,6 +13,9 @@ packages:
  Alamofire:
     url: https://github.com/Alamofire/Alamofire
     from: 5.10.2
+ Kingfisher:
+    url: https://github.com/onevcat/Kingfisher
+    from: 8.3.2
 targets:
   MealNote:
     type: application
@@ -38,3 +41,4 @@ targets:
       - package: RxSwift
       - package: RxDataSources
       - package: Alamofire
+      - package: Kingfisher
