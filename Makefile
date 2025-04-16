@@ -6,7 +6,8 @@ mockoon-run:
 	@docker run -d \
 		--name mealnote-mockoon \
 		-p 3000:3000 \
-		-v ~/mealnote-env.json:/data/environment.json \
+		-v ~/api-response/mealnote/mealnote-env.json:/data/environment.json \
+		-v ~/api-response/mealnote/images:/public/images \
 		mockoon/cli:latest \
 		-d /data/environment.json -p 3000 && \
 	echo "✅ Docker restarted: Mockoon is running at http://localhost:3000" || \
