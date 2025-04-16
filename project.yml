@@ -10,6 +10,9 @@ packages:
  RxDataSources:
     url: https://github.com/RxSwiftCommunity/RxDataSources
     from: 5.0.2
+ Alamofire:
+    url: https://github.com/Alamofire/Alamofire
+    from: 5.10.2
 targets:
   MealNote:
     type: application
@@ -34,3 +37,4 @@ targets:
     dependencies:
       - package: RxSwift
       - package: RxDataSources
+      - package: Alamofire
