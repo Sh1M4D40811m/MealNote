@@ -8,7 +8,7 @@
 import UIKit
 
 enum MealLogDataList {
-    case basic(value: MealLogData, screen: DisplayScreenType)
+    case basic(value: MealLogList.MealLog, screen: DisplayScreenType)
     
     var cellClass: UITableViewCell.Type {
         MealLogCell.self

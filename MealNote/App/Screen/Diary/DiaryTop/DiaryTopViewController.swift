@@ -29,6 +29,7 @@ final class DiaryTopViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.inputs.viewDidLoad.accept(())
         setupTableView()
         bindViews()
         bindViewModel()

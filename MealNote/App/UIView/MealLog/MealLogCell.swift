@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol UpdateRowHeightDelegate: AnyObject {
     func rowHeightDidChange(_ cell: MealLogCell)
@@ -40,14 +41,14 @@ final class MealLogCell: UITableViewCell {
     func configure(with value: MealLogDataList) {
         switch value {
         case .basic(let data, let screen):
-            photo.image = data.image
-            icon.image = data.type.image
-            timeLabel.text = data.date.toString(.time)
+            photo.kf.setImage(with: data.imageURL)
+            icon.image = data.mealType.image
+            timeLabel.text = data.date
             titleLabel.text = data.title
             descriptionLabel.text = data.description
-            dateLabel.text = data.date.toString(.date)
+            dateLabel.text = data.date
             tagItems = data.tags
-            photo.isHidden = data.image == nil
+            photo.isHidden = data.imageURL == nil
             descriptionLabel.isHidden = data.description == nil
             collectionViewContainer.isHidden = data.tags.isEmpty
             dateLabel.isHidden = screen == .diary
