@@ -57,6 +57,7 @@ final class DiaryTopViewModel: DiaryTopViewModelInput, DiaryTopViewModelOutput, 
     }
     
     private func subscribe() {
+        // TODO: UserID・Dateの取得
         viewDidLoad
             .flatMap { self.repository.fetchDiaryTop(userID: 1, date: "2025-04-16") }
             .subscribe(with: self, onNext: { owner, value in
@@ -66,6 +67,7 @@ final class DiaryTopViewModel: DiaryTopViewModelInput, DiaryTopViewModelOutput, 
                 }
                 owner.fetchDataRelay.accept(mealLogDataList)
             }, onError: { _, error  in
+                // TODO: エラーハンドリング実装
                 print("error", error)
             })
             .disposed(by: disposeBag)
