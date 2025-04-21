@@ -5,10 +5,11 @@
 //  Created by mio on 2025/03/12.
 //
 
+import Foundation
 import UIKit
 
 struct MealLogList: Decodable {
-    let date: String
+    let date: Date
     let meals: [MealLog]
     
     private enum CodingKeys: String, CodingKey {
@@ -18,7 +19,7 @@ struct MealLogList: Decodable {
     
     struct MealLog: Decodable {
         let id: Int
-        let date: String
+        let date: Date
         let title: String?
         let description: String?
         let tags: [String]

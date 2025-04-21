@@ -43,10 +43,10 @@ final class MealLogCell: UITableViewCell {
         case .basic(let data, let screen):
             photo.kf.setImage(with: data.imageURL)
             icon.image = data.mealType.image
-            timeLabel.text = data.date
+            timeLabel.text = data.date.toString(.time)
             titleLabel.text = data.title
             descriptionLabel.text = data.description
-            dateLabel.text = data.date
+            dateLabel.text = data.date.toString(.date)
             tagItems = data.tags
             photo.isHidden = data.imageURL == nil
             descriptionLabel.isHidden = data.description == nil
