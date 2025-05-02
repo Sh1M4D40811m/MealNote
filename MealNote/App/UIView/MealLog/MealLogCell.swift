@@ -7,6 +7,9 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 protocol UpdateRowHeightDelegate: AnyObject {
     func rowHeightDidChange(_ cell: MealLogCell)
@@ -24,6 +27,19 @@ final class MealLogCell: UITableViewCell {
     @IBOutlet private weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
     private var tagItems: [String] = []
+    private let disposeBag = DisposeBag()
+    private let tagsSubject = BehaviorSubject<[String]>(value: [])
+    private var dataSource = RxCollectionViewSectionedReloadDataSource<TagSection>(
+        configureCell: { _, collectionView, indexPath, tag in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as! TagCell
+            cell.setTitle(tag)
+            return cell
+        }
+    )
+    
+    struct TagSection {
+        var items: [String]
+    }
     
     weak var delegate: UpdateRowHeightDelegate?
     
@@ -52,6 +68,8 @@ final class MealLogCell: UITableViewCell {
             descriptionLabel.isHidden = data.description == nil
             collectionViewContainer.isHidden = data.tags.isEmpty
             dateLabel.isHidden = screen == .diary
+            
+            tagsSubject.onNext(data.tags)
         }
     }
     
@@ -63,10 +81,14 @@ final class MealLogCell: UITableViewCell {
     
     private func setupCollectionView() {
         collectionView.register(UINib(nibName: "TagCell", bundle: nil), forCellWithReuseIdentifier: "TagCell")
-        collectionView.dataSource = self
         collectionView.isUserInteractionEnabled = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.collectionViewLayout = createLayout()
+        
+        tagsSubject
+            .map { [TagSection(items: $0)] }
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
     
     private func createLayout() -> UICollectionViewLayout {
@@ -93,14 +115,9 @@ final class MealLogCell: UITableViewCell {
     }
 }
 
-extension MealLogCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagItems.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as! TagCell
-        cell.setTitle(tagItems[indexPath.item])
-        return cell
+extension MealLogCell.TagSection: SectionModelType {
+    init(original: MealLogCell.TagSection, items: [String]) {
+        self = original
+        self.items = items
     }
 }
