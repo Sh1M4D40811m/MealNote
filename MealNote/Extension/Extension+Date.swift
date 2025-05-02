@@ -26,4 +26,8 @@ extension Date {
         dateFormatter.locale = .japan
         return dateFormatter.string(from: self)
     }
+    
+    func addDay(_ days: Int) -> Date {
+        Calendar.current.date(byAdding: .day, value: days, to: self) ?? self
+    }
 }

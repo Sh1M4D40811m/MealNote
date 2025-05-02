@@ -41,18 +41,17 @@ final class DiaryTopViewModel: DiaryTopViewModelInput, DiaryTopViewModelOutput, 
     let didSelectDate = PublishRelay<Date>()
     
     // Output
-    let cellData: Driver<[MealLogDataList]>
+    var cellData: Driver<[MealLogDataList]> { fetchDataRelay.asDriver() }
     var selectedDate: Driver<Date> { selectedDateRelay.asDriver() }
     var selectedDateValue: Date { selectedDateRelay.value }
     let openDetail: Signal<Void>
     
-    private let fetchDataRelay = PublishRelay<[MealLogDataList]>()
+    private let fetchDataRelay = BehaviorRelay<[MealLogDataList]>(value: [])
     private let selectedDateRelay = BehaviorRelay<Date>(value: Date())
     private var disposeBag = DisposeBag()
     private let repository = DiaryTopRepository()
     
     init() {
-        cellData = fetchDataRelay.asDriver(onErrorJustReturn: [])
         openDetail = didSelectRow.asSignal()
         subscribe()
     }
@@ -73,6 +72,18 @@ final class DiaryTopViewModel: DiaryTopViewModelInput, DiaryTopViewModelOutput, 
             .disposed(by: disposeBag)
         
         didSelectDate
+            .bind(to: selectedDateRelay)
+            .disposed(by: disposeBag)
+        
+        didTapPrevButton
+            .withLatestFrom(selectedDateRelay)
+            .map { $0.addDay(-1) }
+            .bind(to: selectedDateRelay)
+            .disposed(by: disposeBag)
+        
+        didTapNextButton
+            .withLatestFrom(selectedDateRelay)
+            .map { $0.addDay(1) }
             .bind(to: selectedDateRelay)
             .disposed(by: disposeBag)
     }
