@@ -12,6 +12,7 @@ enum DateFormat: String {
     case time = "HH:mm"     // 1:00
     case dateTimeJp = "yyyy年M月d日 H時mm分" // 2023年1月1日 1時00分
     case dateWeekJp = "yyyy年M月d日(EE)" // 2023年1月1日(日)
+    case dateHyphen = "yyyy-MM-dd" // 2023-01-01
 }
 
 extension Locale {

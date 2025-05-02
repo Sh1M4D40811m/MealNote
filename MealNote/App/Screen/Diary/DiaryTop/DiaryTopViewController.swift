@@ -30,9 +30,14 @@ final class DiaryTopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.inputs.viewDidLoad.accept(())
-        setupTableView()
+        setupUI()
         bindViews()
         bindViewModel()
+    }
+    
+    private func setupUI() {
+        calendarButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        setupTableView()
     }
     
     private func setupTableView() {
@@ -40,6 +45,16 @@ final class DiaryTopViewController: UIViewController {
         tableView.delegate = self
         tableView.contentInset.bottom = 40
         tableView.register(UINib(nibName: "MealLogCell", bundle: nil), forCellReuseIdentifier: "MealLogCell")
+    }
+    
+    private func showDatePicker() {
+        let calendarPickerVC = CalendarPickerViewController(
+            selectedDate: viewModel.outputs.selectedDateValue,
+            onDateSelected: { [weak self] selectedDate in
+                self?.viewModel.inputs.didSelectDate.accept(selectedDate)
+            }
+        )
+        present(calendarPickerVC, animated: true, completion: nil)
     }
     
     private func bindViews() {
@@ -51,8 +66,10 @@ final class DiaryTopViewController: UIViewController {
             .bind(to: viewModel.inputs.didTapNextButton)
             .disposed(by: disposeBag)
         
-        calendarButton.rx.tap
-            .bind(to: viewModel.inputs.didTapCalendarButton)
+        calendarButton.rx.tap.asDriver()
+            .drive(with: self, onNext: { owner, _ in
+                owner.showDatePicker()
+            })
             .disposed(by: disposeBag)
     }
     
@@ -61,10 +78,9 @@ final class DiaryTopViewController: UIViewController {
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        viewModel.outputs.openCalendar
-            .emit(with: self, onNext: { _, _ in
-                print("pop Calender")
-            })
+        viewModel.outputs.selectedDate
+            .map { $0.toString(.dateWeekJp) }
+            .drive(calendarButton.rx.title())
             .disposed(by: disposeBag)
         
         viewModel.outputs.openDetail
