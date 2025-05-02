@@ -11,6 +11,7 @@ import RxCocoa
 
 protocol DiaryTopViewModelInput: AnyObject {
     var viewDidLoad: PublishRelay<Void> { get }
+    var reloadData: PublishRelay<Date> { get }
     var didTapPrevButton: PublishRelay<Void> { get }
     var didTapNextButton: PublishRelay<Void> { get }
     var didSelectRow: PublishRelay<Void> { get }
@@ -35,6 +36,7 @@ final class DiaryTopViewModel: DiaryTopViewModelInput, DiaryTopViewModelOutput, 
     
     // Input
     let viewDidLoad = PublishRelay<Void>()
+    let reloadData = PublishRelay<Date>()
     let didTapPrevButton = PublishRelay<Void>()
     let didTapNextButton = PublishRelay<Void>()
     let didSelectRow = PublishRelay<Void>()
@@ -59,8 +61,8 @@ final class DiaryTopViewModel: DiaryTopViewModelInput, DiaryTopViewModelOutput, 
     
     private func subscribe() {
         // TODO: UserIDの取得
-        viewDidLoad
-            .flatMap { self.repository.fetchDiaryTop(userID: 1, date: self.selectedDateRelay.value.toString(.dateHyphen)) }
+        Observable.merge(viewDidLoad.withLatestFrom(selectedDateRelay), reloadData.asObservable())
+            .flatMap { self.repository.fetchDiaryTop(userID: 1, date: $0.toString(.dateHyphen)) }
             .subscribe(with: self, onNext: { owner, value in
                 let mealLogDataList = value.meals.map { meal in
                     MealLogDataList.basic(value: meal, screen: .diary)

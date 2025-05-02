@@ -52,6 +52,7 @@ final class DiaryTopViewController: UIViewController {
             selectedDate: viewModel.outputs.selectedDateValue,
             onDateSelected: { [weak self] selectedDate in
                 self?.viewModel.inputs.didSelectDate.accept(selectedDate)
+                self?.viewModel.inputs.reloadData.accept(selectedDate)
             }
         )
         present(calendarPickerVC, animated: true, completion: nil)
