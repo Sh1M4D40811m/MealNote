@@ -12,7 +12,7 @@ import RxCocoa
 class CalendarPickerViewController: UIViewController {
     private let selectButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("決定", for: .normal)
+        button.setTitle(L10n.set, for: .normal)
         button.setTitleColor(.systemTeal, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         button.contentHorizontalAlignment = .right
@@ -22,7 +22,7 @@ class CalendarPickerViewController: UIViewController {
     
     private let cancelButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("キャンセル", for: .normal)
+        button.setTitle(L10n.cancel, for: .normal)
         button.setTitleColor(.systemGray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.contentHorizontalAlignment = .left

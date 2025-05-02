@@ -33,6 +33,8 @@ internal enum L10n {
   /// 
   ///   Created by shimadamio on 2025/04/11.
   internal static let save = L10n.tr("Localizable", "save", fallback: "保存")
+  /// 決定
+  internal static let `set` = L10n.tr("Localizable", "set", fallback: "決定")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

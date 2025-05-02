@@ -8,6 +8,7 @@
 
 // Common
 "save" = "保存";
+"set" = "決定";
 "cancel" = "キャンセル";
 // DiaryTop
 "diaryTopNavigationTitle" = "MealNote";
