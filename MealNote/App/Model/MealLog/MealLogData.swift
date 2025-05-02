@@ -9,11 +9,9 @@ import Foundation
 import UIKit
 
 struct MealLogList: Decodable {
-    let date: Date
     let meals: [MealLog]
     
     private enum CodingKeys: String, CodingKey {
-        case date
         case meals
     }
     

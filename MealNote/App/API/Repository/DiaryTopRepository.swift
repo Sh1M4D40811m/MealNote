@@ -15,6 +15,6 @@ class DiaryTopRepository: DiaryTopRepositoryProtocol {
     private let apiClient = APIClient()
 
     func fetchDiaryTop(userID: Int, date: String) -> Single<MealLogList> {
-        return apiClient.request(APIRouter.getDiaryTop(userID: userID, date: date))
+        apiClient.request(APIRouter.getDiaryTop(userID: userID, date: date))
     }
 }
