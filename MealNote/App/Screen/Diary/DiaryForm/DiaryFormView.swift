@@ -92,7 +92,7 @@ struct DiaryFormView: View {
             } label: {
                 Text(L10n.cancel)
                     .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.teal)
+                    .foregroundColor(.gray)
 
             }
         }
