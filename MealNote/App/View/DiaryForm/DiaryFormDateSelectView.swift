@@ -1,5 +1,5 @@
 //
-//  DiaryEntryDateSelectView.swift
+//  DiaryFormDateSelectView.swift
 //  MealNote
 //
 //  Created by mio on 2025/04/06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiaryEntryDateSelectView: View {
+struct DiaryFormDateSelectView: View {
     @Binding private var selectedDate: Date
     @Binding private var isShowDatePicker: Bool
     
@@ -19,7 +19,7 @@ struct DiaryEntryDateSelectView: View {
     var body: some View {
         VStack {
             HStack(spacing: 4) {
-                Text(L10n.diaryEntrySelectDateHeader)
+                Text(L10n.DiaryFormSelectDateHeader)
                     .font(.system(size: 16))
                 Spacer()
                 TextButton(title: selectedDate.toString(.dateTimeJp)) {

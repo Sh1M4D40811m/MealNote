@@ -1,5 +1,5 @@
 //
-//  DiaryEntryTagSelectView.swift
+//  DiaryFormTagSelectView.swift
 //  MealNote
 //
 //  Created by mio on 2025/04/06.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct DiaryEntrySelectableButtonItem: Identifiable {
+struct DiaryFormSelectableButtonItem: Identifiable {
     let id = UUID()
     let title: String
     var isSelected: Bool = false
 }
 
-struct DiaryEntryTagSelectView: View {
-    @Binding private var tags: [DiaryEntrySelectableButtonItem]
+struct DiaryFormTagSelectView: View {
+    @Binding private var tags: [DiaryFormSelectableButtonItem]
     
-    init(tags: Binding<[DiaryEntrySelectableButtonItem]>) {
+    init(tags: Binding<[DiaryFormSelectableButtonItem]>) {
         self._tags = tags
     }
     

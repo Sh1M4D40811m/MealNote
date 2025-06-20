@@ -1,5 +1,5 @@
 //
-//  DiaryEntryView.swift
+//  DiaryFormView.swift
 //  MealNote
 //
 //  Created by mio on 2025/03/22.
@@ -8,18 +8,18 @@
 import SwiftUI
 import PhotosUI
 
-struct DiaryEntryView: View {
+struct DiaryFormView: View {
     var dismissAction: (_ isCancel: Bool) -> Void = { _ in }
     
     private var titleInputParams = TextEditorWithTitleViewParameters(
-        title: L10n.diaryEntryTitleHeader,
-        placeholder: L10n.diaryEntryTitlePlaceholder,
+        title: L10n.DiaryFormTitleHeader,
+        placeholder: L10n.DiaryFormTitlePlaceholder,
         initialHeight: 80
     )
     
     private var memoInputParams = TextEditorWithTitleViewParameters(
-        title: L10n.diaryEntryMemoHeader,
-        placeholder: L10n.diaryEntryMemoPlaceholder,
+        title: L10n.DiaryFormMemoHeader,
+        placeholder: L10n.DiaryFormMemoPlaceholder,
         initialHeight: 120
     )
     
@@ -30,13 +30,13 @@ struct DiaryEntryView: View {
     @State private var titleText = ""
     @State private var memoText = ""
     // FIXME: Delete Sample
-    @State var mealType: [DiaryEntrySelectableButtonItem] = [
+    @State var mealType: [DiaryFormSelectableButtonItem] = [
         .init(title: "朝食", isSelected: true),
         .init(title: "昼食"),
         .init(title: "夕食"),
         .init(title: "間食")
     ]
-    @State var tags: [DiaryEntrySelectableButtonItem] = [
+    @State var tags: [DiaryFormSelectableButtonItem] = [
         .init(title: "米"),
         .init(title: "パン"),
         .init(title: "糖質制限"),
@@ -63,15 +63,15 @@ struct DiaryEntryView: View {
     private var contents: some View {
         ScrollView {
             VStack(spacing: 24) {
-                DiaryEntryDateSelectView(selectedDate: $selectedDate, isShowDatePicker: $isShowDatePicker)
+                DiaryFormDateSelectView(selectedDate: $selectedDate, isShowDatePicker: $isShowDatePicker)
                 Divider()
-                DiaryEntryMealTypeSelectView(mealType: $mealType)
+                DiaryFormMealTypeSelectView(mealType: $mealType)
                 Divider()
                 TextEditorWithTitleView(titleInputParams, text: $titleText)
                 TextEditorWithTitleView(memoInputParams, text: $memoText)
-                DiaryEntryImageSelectView(selectedItems: $selectedItems, selectedImages: $selectedImages)
+                DiaryFormImageSelectView(selectedItems: $selectedItems, selectedImages: $selectedImages)
                 Divider()
-                DiaryEntryTagSelectView(tags: $tags)
+                DiaryFormTagSelectView(tags: $tags)
             }
             .padding(16)
             .padding(.bottom, 54)
@@ -79,7 +79,7 @@ struct DiaryEntryView: View {
     }
     
     private var bottomButton: some View {
-        MediumEmphasisButton(title: L10n.diaryEntryCallMySet) {
+        MediumEmphasisButton(title: L10n.DiaryFormCallMySet) {
             dismissAction(false)
         }.padding(16)
     }

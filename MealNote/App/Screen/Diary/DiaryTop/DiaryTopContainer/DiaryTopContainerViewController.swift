@@ -51,7 +51,7 @@ final class DiaryTopContainerViewController: UIViewController {
     private func bindViews() {
         addButton.rx.tap.asDriver()
             .drive(with: self, onNext: { owner, _ in
-                owner.delegate?.openDiaryEntry()
+                owner.delegate?.openDiaryForm()
             })
             .disposed(by: disposeBag)
         

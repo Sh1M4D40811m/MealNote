@@ -1,5 +1,5 @@
 //
-//  DiaryEntryMealTypeSelectView.swift
+//  DiaryFormMealTypeSelectView.swift
 //  MealNote
 //
 //  Created by mio on 2025/04/06.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct DiaryEntryMealTypeSelectView: View {
-    @Binding private var mealType: [DiaryEntrySelectableButtonItem]
+struct DiaryFormMealTypeSelectView: View {
+    @Binding private var mealType: [DiaryFormSelectableButtonItem]
     
-    init(mealType: Binding<[DiaryEntrySelectableButtonItem]>) {
+    init(mealType: Binding<[DiaryFormSelectableButtonItem]>) {
         self._mealType = mealType
     }
     
-    private func selectMealType(_ selectedType: DiaryEntrySelectableButtonItem) {
+    private func selectMealType(_ selectedType: DiaryFormSelectableButtonItem) {
         for index in mealType.indices {
             mealType[index].isSelected = (mealType[index].id == selectedType.id)
         }

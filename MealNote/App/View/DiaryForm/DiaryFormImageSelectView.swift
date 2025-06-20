@@ -1,5 +1,5 @@
 //
-//  DiaryEntryImageSelectView.swift
+//  DiaryFormImageSelectView.swift
 //  MealNote
 //
 //  Created by mio on 2025/04/09.
@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 // TODO: 画像複数選択できるようにする
-struct DiaryEntryImageSelectView: View {
+struct DiaryFormImageSelectView: View {
     @Binding private var selectedItems: [PhotosPickerItem]
     @Binding private var selectedImages: [UIImage]
     
@@ -48,7 +48,7 @@ struct DiaryEntryImageSelectView: View {
             HStack {
                 imagePreview
                 Spacer()
-                Text(L10n.diaryEntrySelectImageHeader)
+                Text(L10n.DiaryFormSelectImageHeader)
                     .foregroundColor(.teal)
                     .font(.system(size: 16, weight: .semibold))
                     .padding(.trailing, 16)

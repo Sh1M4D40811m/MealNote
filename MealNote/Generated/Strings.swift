@@ -13,19 +13,19 @@ internal enum L10n {
   /// キャンセル
   internal static let cancel = L10n.tr("Localizable", "cancel", fallback: "キャンセル")
   /// マイセット呼び出し
-  internal static let diaryEntryCallMySet = L10n.tr("Localizable", "diaryEntryCallMySet", fallback: "マイセット呼び出し")
+  internal static let DiaryFormCallMySet = L10n.tr("Localizable", "DiaryFormCallMySet", fallback: "マイセット呼び出し")
   /// メモ
-  internal static let diaryEntryMemoHeader = L10n.tr("Localizable", "diaryEntryMemoHeader", fallback: "メモ")
+  internal static let DiaryFormMemoHeader = L10n.tr("Localizable", "DiaryFormMemoHeader", fallback: "メモ")
   /// 付け合わせなど（例：白米、味噌汁...）
-  internal static let diaryEntryMemoPlaceholder = L10n.tr("Localizable", "diaryEntryMemoPlaceholder", fallback: "付け合わせなど（例：白米、味噌汁...）")
+  internal static let DiaryFormMemoPlaceholder = L10n.tr("Localizable", "DiaryFormMemoPlaceholder", fallback: "付け合わせなど（例：白米、味噌汁...）")
   /// 日時を選択
-  internal static let diaryEntrySelectDateHeader = L10n.tr("Localizable", "diaryEntrySelectDateHeader", fallback: "日時を選択")
+  internal static let DiaryFormSelectDateHeader = L10n.tr("Localizable", "DiaryFormSelectDateHeader", fallback: "日時を選択")
   /// 画像を追加
-  internal static let diaryEntrySelectImageHeader = L10n.tr("Localizable", "diaryEntrySelectImageHeader", fallback: "画像を追加")
+  internal static let DiaryFormSelectImageHeader = L10n.tr("Localizable", "DiaryFormSelectImageHeader", fallback: "画像を追加")
   /// タイトル
-  internal static let diaryEntryTitleHeader = L10n.tr("Localizable", "diaryEntryTitleHeader", fallback: "タイトル")
+  internal static let DiaryFormTitleHeader = L10n.tr("Localizable", "DiaryFormTitleHeader", fallback: "タイトル")
   /// メイン料理など（例：焼き鮭、唐揚げ...）
-  internal static let diaryEntryTitlePlaceholder = L10n.tr("Localizable", "diaryEntryTitlePlaceholder", fallback: "メイン料理など（例：焼き鮭、唐揚げ...）")
+  internal static let DiaryFormTitlePlaceholder = L10n.tr("Localizable", "DiaryFormTitlePlaceholder", fallback: "メイン料理など（例：焼き鮭、唐揚げ...）")
   /// MealNote
   internal static let diaryTopNavigationTitle = L10n.tr("Localizable", "diaryTopNavigationTitle", fallback: "MealNote")
   /// Localizable.strings

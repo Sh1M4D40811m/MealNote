@@ -1,5 +1,5 @@
 //
-//  DiaryEntryCoordinator.swift
+//  DiaryFormCoordinator.swift
 //  MealNote
 //
 //  Created by mio on 2025/03/22.
@@ -8,13 +8,13 @@
 import UIKit
 import SwiftUI
 
-protocol DiaryEntryCoordinatorDelegate: AnyObject {
+protocol DiaryFormCoordinatorDelegate: AnyObject {
     func dismissComplete()
     func dismissCancel()
     func openEditTag()
 }
 
-final class DiaryEntryCoordinator: Coordinator {
+final class DiaryFormCoordinator: Coordinator {
     private let parent: UIViewController!
     private weak var navigator: NavigationController!
     
@@ -27,7 +27,7 @@ final class DiaryEntryCoordinator: Coordinator {
     }
     
     func start() {
-        var view = DiaryEntryView()
+        var view = DiaryFormView()
         view.dismissAction = dismissAction
         let vc = UIHostingController(rootView: view)
         let nav = NavigationController(rootViewController: vc)
@@ -38,7 +38,7 @@ final class DiaryEntryCoordinator: Coordinator {
     }
 }
 
-extension DiaryEntryCoordinator: DiaryEntryCoordinatorDelegate {
+extension DiaryFormCoordinator: DiaryFormCoordinatorDelegate {
     func dismissComplete() {
         navigator.dismiss(animated: true)
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DiaryTopContainerCoordinatorDelegate: AnyObject {
-    func openDiaryEntry()
+    func openDiaryForm()
     func openReviewTop()
     func openEditTag()
     func openEditFavorite()
@@ -16,7 +16,7 @@ protocol DiaryTopContainerCoordinatorDelegate: AnyObject {
 
 final class DiaryTopContainerCoordinator: Coordinator {
     private let navigator: NavigationController!
-    private var diaryEntryCoordinator: DiaryEntryCoordinator?
+    private var diaryFormCoordinator: DiaryFormCoordinator?
     private var reviewTopCoordinator: ReviewTopCoordinator?
     
     init(navigator: NavigationController) {
@@ -32,9 +32,9 @@ final class DiaryTopContainerCoordinator: Coordinator {
 }
 
 extension DiaryTopContainerCoordinator: DiaryTopContainerCoordinatorDelegate {
-    func openDiaryEntry() {
-        diaryEntryCoordinator = DiaryEntryCoordinator(parent: navigator)
-        diaryEntryCoordinator?.start()
+    func openDiaryForm() {
+        diaryFormCoordinator = DiaryFormCoordinator(parent: navigator)
+        diaryFormCoordinator?.start()
     }
     
     func openReviewTop() {
