@@ -16,7 +16,7 @@ class NavigationController: UINavigationController {
     
     private func setupAppearance() {
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .systemBackground
+        appearance.backgroundColor = .white
         appearance.titleTextAttributes = [.foregroundColor: UIColor.systemTeal]
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
@@ -26,8 +26,9 @@ class NavigationController: UINavigationController {
     
     func setSeparator() {
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .systemBackground
+        appearance.backgroundColor = .white
         appearance.titleTextAttributes = [.foregroundColor: UIColor.label]
+        appearance.shadowColor = .opaqueSeparator
         self.navigationBar.standardAppearance = appearance
         self.navigationBar.scrollEdgeAppearance = appearance
         self.navigationBar.compactAppearance = appearance
@@ -35,10 +36,11 @@ class NavigationController: UINavigationController {
     
     func setScrollEdgeWithoutSeparator() {
         let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.backgroundColor = .systemBackground
+        standardAppearance.backgroundColor = .white
         standardAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
+        standardAppearance.shadowColor = .opaqueSeparator
         let scrollEdgeAppearance = UINavigationBarAppearance()
-        scrollEdgeAppearance.backgroundColor = .systemBackground
+        scrollEdgeAppearance.backgroundColor = .white
         scrollEdgeAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
         scrollEdgeAppearance.shadowColor = .clear
         self.navigationBar.standardAppearance = standardAppearance

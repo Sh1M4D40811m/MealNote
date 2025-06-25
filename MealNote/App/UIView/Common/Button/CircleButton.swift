@@ -20,9 +20,11 @@ class CircleButton: UIButton {
     }
     
     private func setupUI() {
-        tintColor = .systemTeal
-        layer.cornerRadius = min(frame.width, frame.height) / 2
-        layer.masksToBounds = true
+        var config = configuration ?? UIButton.Configuration.filled()
+        config.cornerStyle = .capsule
+        config.baseBackgroundColor = .systemTeal
+        configuration = config
+        tintColor = .white
     }
 }
 

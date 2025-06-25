@@ -86,25 +86,52 @@ struct DiaryFormView: View {
     
     @ToolbarContentBuilder
     private func toolbar() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
-            Button {
-                dismissAction(true)
-            } label: {
-                Text(L10n.cancel)
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.gray)
-
+        if #available(iOS 26.0, *) {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismissAction(true)
+                } label: {
+                    Text(L10n.cancel)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.gray)
+                    
+                }
+            }.sharedBackgroundVisibility(.hidden)
+        } else {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismissAction(true)
+                } label: {
+                    Text(L10n.cancel)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.gray)
+                    
+                }
             }
         }
         
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-                dismissAction(false)
-            } label: {
-                Text(L10n.save)
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.teal)
-
+        if #available(iOS 26.0, *) {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    dismissAction(false)
+                } label: {
+                    Text(L10n.save)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.teal)
+                    
+                }
+            }
+            .sharedBackgroundVisibility(.hidden)
+        } else {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    dismissAction(false)
+                } label: {
+                    Text(L10n.save)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.teal)
+                    
+                }
             }
         }
     }
